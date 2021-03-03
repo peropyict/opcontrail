@@ -18,6 +18,7 @@ class VNCLI(object):
     def __init__(self, vn_uuid = ''):
         self.vn_uuid = vn_uuid
         #test
+        #test
     def print_VNs(self):
         VNManager = VNResManager()
         VNs = VNManager.VNs
