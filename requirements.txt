@@ -1,0 +1,6 @@
+argcomplete
+argparse
+prompt_toolkit
+requests
+lxml
+prettytable
