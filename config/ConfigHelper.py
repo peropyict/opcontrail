@@ -26,21 +26,18 @@ class HelperClass(object):
             return response.json()['uuid']       
         return None
 
-    def completeNew(self, text, state):
-        #complete method implements filtering functionality for a given dictionary of objects 
+    '''def completeNew(self, text, state):
         if len(text) > len(self.last_search_text):
             self.last_search_text = text
             self.search_result_list = []
         if self.search_object_by == 'fq_name':
-            #print([item for item in self.dict_object if text in str(item.fq_name)])
-            #for item in self.dict_object if text in str(item.fq_name):
             for item in self.dict_object:
                 if text in str(item.fq_name):
                     if not state:
                         self.search_result_list.append(item)                                          
                         return item
                     else:
-                        state -= 1
+                        state -= 1'''
 
     def complete(self, text, state):
         #complete method implements filtering functionality for a given dictionary of objects 
@@ -64,21 +61,3 @@ class HelperClass(object):
                         return p_info[self.search_object_by]
                     else:
                         state -= 1
-
-    #def searchHelper(self, searchText)       
-    '''
-    def completeCLI(self, text, state):
-        for p_id, p_info in self.dict_object.items():                 
-            if text in str(p_info['name'][0]+"."+p_info['name'][1]+"."+p_info['name'][2]):
-                if not state:                    
-                    return p_info['name'][0]+"."+p_info['name'][1]+"."+p_info['name'][2]
-                else:
-                    state -= 1
-    def completeCLIIP(self, text, state):
-        for p_id, p_info in self.dict_object.items():                 
-            if text in str(p_info[self.search_object_attribute]):
-                if not state:    
-                    return p_info[self.search_object_attribute]
-                else:
-                    state -= 1
-    '''

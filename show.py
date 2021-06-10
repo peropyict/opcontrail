@@ -4,7 +4,7 @@
 version = '1'
 # Date          : 2021-02-29
 
-# This script provides a cli demo for to list and retrieve contrail object details at config, control and agent level.
+# This script provides a cli demo  to list and retrieve contrail config object details.
 
 import argcomplete, argparse
 import sys
@@ -16,7 +16,8 @@ sys.path.insert(0, parent_dir_path)
 
 from config.VN_CLI import VNCLI
 from config.IP_CLI import IPCLI
-from control.Control_CLI import BGPCLI
+from config.RTCLI import RTCLI
+#from control.Control_CLI import BGPCLI
 #from control.Control_VN_CLI
 
 
@@ -38,9 +39,7 @@ class Show_config(ShowBasic):
         self.add_parse_args()
 
     def show_config_vn(self, args):
-
         config_vn_cli = VNCLI() 
-        #if args.all != ''
         config_vn_cli.print_VNs()
         
     def show_config_ip(self, args):
@@ -51,8 +50,12 @@ class Show_config(ShowBasic):
         config_vn_cli = VNCLI() 
         config_vn_cli.print_VNs()
 
-    def show_control(self, args):
-        print(args.ri)
+    def show_config_rt(self, args):
+        config_rt_cli = RTCLI() 
+        config_rt_cli.print_RTs()
+
+    """ def show_control(self, args):
+        print(args.ri) """
         
 
     def add_parse_args(self):
@@ -77,7 +80,14 @@ class Show_config(ShowBasic):
         subp.add_argument('-u', '--uuid', default='', help='RI uuid')
         subp.set_defaults(func=self.show_config_ri)
 
-class Show_control(ShowBasic):
+        subp = self.subparser.add_parser('rt',
+                                         parents = [self.common_parser],
+                                         help='Show Route  Target ')
+        subp.add_argument('name', nargs='?', default='', help='RT name')
+        subp.add_argument('-u', '--uuid', default='', help='RT uuid')
+        subp.set_defaults(func=self.show_config_rt)
+
+""" class Show_control(ShowBasic):
     def __init__(self, parser):
         super().__init__(parser)
         self.add_parse_args()
@@ -108,7 +118,7 @@ class Show_control(ShowBasic):
                                          help='Show Routing Instance ')
         subp.add_argument('name', nargs='?', default='', help='RI name')
         subp.add_argument('-u', '--uuid', default='', help='RI uuid')
-        subp.set_defaults(func=self.show_control_ri)
+        subp.set_defaults(func=self.show_control_ri) """
 
 
 def main():

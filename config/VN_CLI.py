@@ -12,6 +12,7 @@ from config.rest.IP_res import IPResManager
 from config.rest.VN_res import VNResManager, VirtualNetworkManager
 from config.ConfigHelper import HelperClass
 from config.rest.RI_res import RIManager, RoutingInstance
+from config.rest.VMI_rest import VMRestManager,VirtualMachineInterface
 
 
 class VNCLI(object):
@@ -21,6 +22,7 @@ class VNCLI(object):
         #test
     def print_VNs(self):
         VNManager = VNResManager()
+        #VMRestManager = VMRestManager()
         VNs = VNManager.VNs
         VNhelper = HelperClass(VNs)
 
@@ -113,6 +115,12 @@ class VNCLI(object):
             IPs_dict = self.getVNIPs(VN_obj)
             for IP_id, IP_info in IPs_dict.items():   
                 print("IP : " + IP_info["IP_obj"]["instance-ip"]["instance_ip_address"] ) 
+                
+                for VMI_uuid in IP_info["IP_obj"]["instance-ip"]["virtual_machine_interface_refs"]:
+                    vmi = VirtualMachineInterface(VMI_uuid["uuid"])
+                    print ("compute node: " + vmi.compute )
+                    print ("interface: [" + vmi.mac + " | " + vmi.tap + "]")
+                    
         else:
             print("VN doesn't have any IP instance")
         

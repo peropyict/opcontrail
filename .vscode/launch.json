@@ -20,7 +20,17 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": ["config","vn"]
+            "args": ["config","rt"],
+            "args2": ["compute", "container", "192.168.24.22","-c sudo docker exec contrail_vrouter_agent flow -l"]
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "run.py",
+            "console": "integratedTerminal",
+            "args": ["config","vn"],
+            "args2": ["container", "192.168.24.22","-c sudo docker exec contrail_vrouter_agent flow -l  --match 10.219.140.3"]
         },
         {
             "name": "Python: Terminal (integrated)",
@@ -28,7 +38,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": ["config","vn"]
+            "args": ["config","ip"]
         }
     ]
 }
