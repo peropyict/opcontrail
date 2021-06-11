@@ -17,8 +17,7 @@ from config.rest.RT_res import RTRestManager, RouteTargetManager
 class RTCLI(object):
     def __init__(self, rt_uuid = ''):
         self.rt_uuid = rt_uuid
-        #test
-        #test
+        
     def print_RTs(self):
         RTManager = RTRestManager()
         RTs = RTManager.getRTs()
@@ -77,9 +76,9 @@ class RTCLI(object):
         RT_json = RTManager.getRT(RTuuid)
         RT_obj = RouteTargetManager(RT_json["route-target"])
 
-        #print("Route Targets: ---" )
-        #print("import route targets: " + str(RT_obj.fq_name))
-        print("Routing instances: " + str(RT_obj.RIs))
+        print("Routing instances: ")
+        for RI in  RT_obj.RIs:
+            print(str(RI["to"]))
 
         
     
