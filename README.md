@@ -46,7 +46,7 @@ Type + Enter to search objects
 get
 $ ./show.py config vn
 Search for a VN Name: pub
------------------------------------------
+
 VN fqname: ['default-domain', 'admin', 'publicVN']
 VN UUID: 983118bb-d11d-4281-9302-4e4bb1b1d137
 Route Targets: ---
@@ -73,7 +73,7 @@ interface: [02:22:6b:2e:f2:2b | tap226b2ef2-2b]
 Type + Tab to search objects 
 $ ./show.py config rt
 Search for a RT Name: target.64512.1000
------------------------------------------
+
 RT fqname: ['target', '64512', '1000']
 RT UUID: 8d34f2bf-76f3-4000-ab83-53047c5542d7
 Routing instances: 
