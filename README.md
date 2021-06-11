@@ -3,10 +3,11 @@ Virtual Networks details include: name & uuid, system & user created route targe
 
 
 Usage:
-*git clone https://github.com/peropyict/opcontrail.git
-*cd opcontrail
-*sudo apt install python3-pip
-*sudo pip3 install -r requirements.txt
+* git clone https://github.com/peropyict/opcontrail.git
+* cd opcontrail
+* sudo apt install python3-pip
+* sudo pip3 install -r requirements.txt
+* edit config.ini
 
 The script requires connection to contrail api localhost 8095 port. Tunnel example for Contrail with RHOSP: ssh -J root@10.219.117.11,stack@192.168.122.241 heat-admin@192.168.24.6 -L8083:127.0.0.1:8083 -L8087:127.0.0.1:8087 -L15673:127.0.0.1:15673 -L8095:127.0.0.1:8095
 
@@ -27,9 +28,10 @@ optional arguments:
 
 Examples:
 
-Enter to list objects: 
-Example:
-```$ ./show.py config rt
+Hit Enter to list all objects: 
+
+```
+$ ./show.py config rt
 Search for a RT Name: 
 RI fqname: ['target', '64512', '8000005'] .... uuid(c58403c6-4caf-4d5b-8337-3e82e566e4bf)
 RI fqname: ['target', '64512', '8000002'] .... uuid(5d2f6021-18a1-4097-b31f-1245b6c43658)
@@ -71,7 +73,8 @@ interface: [02:22:6b:2e:f2:2b | tap226b2ef2-2b]
 ```
 
 Type + Tab to search objects 
-```$ ./show.py config rt
+```
+$ ./show.py config rt
 Search for a RT Name: target.64512.1000
 
 RT fqname: ['target', '64512', '1000']
